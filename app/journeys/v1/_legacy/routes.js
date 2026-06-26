@@ -19,7 +19,7 @@ router.all('/site/:id/change/group/:itemId/:step', redirectLegacyToClinics);
 
 router.get('/site/:id/clinics/old-change/:sessionId', (req, res) => {
   res.render('_legacy/old-change-journey', {
-    backHref: req.query.back || `/site/${req.site_id}/availability/week`
+    backHref: req.query.back || `/site/${req.site_id}/clinics/week`
   });
 });
 

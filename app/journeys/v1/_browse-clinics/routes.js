@@ -1,5 +1,6 @@
-// Journey: availability (day / week / month views)
-// URL base: /site/:id/availability/{day,week,month}
+// Journey controller: browse clinics (list + day / week / month views)
+// Canonical URL base: /site/:id/clinics and /site/:id/clinics/{day,week,month}
+// Legacy /site/:id/availability/{day,week,month} URLs redirect here.
 // Per-site context (res.locals.dailyAvailability, res.locals.slots) is provided
 // centrally by app/journeys/_shared/site-context.js.
 
@@ -14,9 +15,53 @@ const {
   buildMonthWeekRanges,
   buildMonthAvailabilitySummary,
   sortSessionsForAvailability,
+  clearEditState,
+  ensureCreateSession,
+  toPositiveInteger,
+  paginateItems,
+  buildNhsPagination,
 } = require('../_shared/helpers');
 
-router.get('/site/:id/availability/day', (req, res) => {
+function clinicsViewPath(siteId, view, query = '') {
+  return `/site/${siteId}/clinics/${view}${query}`;
+}
+
+function legacyAvailabilityRedirect(view) {
+  return (req, res) => {
+    const query = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+    return res.redirect(clinicsViewPath(req.site_id, view, query));
+  };
+}
+
+router.get('/site/:id/availability/day', legacyAvailabilityRedirect('day'));
+router.get('/site/:id/availability/week', legacyAvailabilityRedirect('week'));
+router.get('/site/:id/availability/month', legacyAvailabilityRedirect('month'));
+
+router.get('/site/:id/clinics', (req, res) => {
+  clearEditState(req.session.data);
+  ensureCreateSession(req.session.data);
+
+  const clinicsPerPage = toPositiveInteger(req.features?.clinicsPerPage, 10);
+  const requestedPage = toPositiveInteger(req.query.page, 1);
+  const paginationResult = paginateItems(res.locals.sessionHistory || [], requestedPage, clinicsPerPage);
+  const paginationQuery = { ...req.query };
+  delete paginationQuery.page;
+
+  res.locals.sessionHistory = paginationResult.items;
+
+  const clinicsPagination = buildNhsPagination(
+    `/site/${req.site_id}/clinics`,
+    paginationQuery,
+    paginationResult.currentPage,
+    paginationResult.totalPages
+  );
+
+  res.render('clinics/clinics', {
+    clinicsPagination
+  });
+});
+
+router.get('/site/:id/clinics/day', (req, res) => {
   const data = req.session.data;
   const site_id = req.site_id;
   const date = req.query.date || getToday();
@@ -32,7 +77,7 @@ router.get('/site/:id/availability/day', (req, res) => {
     site_id,
     today,
     data?.recurring_sessions?.[site_id] || {},
-    `/site/${site_id}/availability/day?date=${date}`
+    `/site/${site_id}/clinics/day?date=${date}`
   )[0] || {
     date,
     sessions: [],
@@ -41,7 +86,7 @@ router.get('/site/:id/availability/day', (req, res) => {
     unbookedAppointments: 0,
     isToday: date === today,
     isPast: date < today,
-    dayViewHref: `/site/${site_id}/availability/day?date=${date}`
+    dayViewHref: `/site/${site_id}/clinics/day?date=${date}`
   };
 
   if ((daySummary.sessions || []).length === 0 && (res.locals.dailyAvailability?.[date]?.sessions || []).length > 0) {
@@ -86,7 +131,7 @@ router.get('/site/:id/availability/day', (req, res) => {
         unbookedTotal: Math.max(0, totalSlots - bookedTotal),
         actionHref: date < today || !session?.recurringId
           ? null
-          : `/site/${site_id}/change/session/${session.id}?back=${encodeURIComponent(`/site/${site_id}/availability/day?date=${date}`)}`,
+          : `/site/${site_id}/change/session/${session.id}?back=${encodeURIComponent(`/site/${site_id}/clinics/day?date=${date}`)}`,
         cancelHref
       };
     });
@@ -106,7 +151,7 @@ router.get('/site/:id/availability/day', (req, res) => {
   });
 });
 
-router.get('/site/:id/availability/week', (req, res) => {
+router.get('/site/:id/clinics/week', (req, res) => {
   const data = req.session.data;
   const site_id = req.site_id;
   const startFromDate = req.query.date || getToday();
@@ -139,7 +184,7 @@ router.get('/site/:id/availability/week', (req, res) => {
     site_id,
     today,
     data?.recurring_sessions?.[site_id] || {},
-    `/site/${site_id}/availability/week?date=${startFromDate}`
+    `/site/${site_id}/clinics/week?date=${startFromDate}`
   );
 
   res.render('availability/week', {
@@ -152,7 +197,7 @@ router.get('/site/:id/availability/week', (req, res) => {
   });
 });
 
-router.get('/site/:id/availability/month', (req, res) => {
+router.get('/site/:id/clinics/month', (req, res) => {
   const data = req.session.data;
   const site_id = req.site_id;
   const today = getToday();

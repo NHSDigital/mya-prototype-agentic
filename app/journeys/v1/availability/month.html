@@ -14,15 +14,15 @@
           items: [
             {
               text: 'Day view',
-              href: '/site/' ~ site_id ~ '/availability/day'
+              href: '/site/' ~ site_id ~ '/clinics/day'
             },
             {
               text: 'Week view',
-              href: '/site/' ~ site_id ~ '/availability/week'
+              href: '/site/' ~ site_id ~ '/clinics/week'
             },
             {
               text: 'Month view',
-              href: '/site/' ~ site_id ~ '/availability/month',
+              href: '/site/' ~ site_id ~ '/clinics/month',
               current: true
             },
             {
@@ -38,11 +38,11 @@
       {{ pagination({
         previous: {
           labelText: (previousMonthDate | formatDate('LLLL yyyy')),
-          href: "/site/" ~ site_id ~ "/availability/month?date=" ~ previousMonthDate
+          href: "/site/" ~ site_id ~ "/clinics/month?date=" ~ previousMonthDate
         },
         next: {
           labelText: (nextMonthDate | formatDate('LLLL yyyy')),
-          href: "/site/" ~ site_id ~ "/availability/month?date=" ~ nextMonthDate
+          href: "/site/" ~ site_id ~ "/clinics/month?date=" ~ nextMonthDate
         }
       }) }}
 

@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Browse clinics",
+  "summary": "Move around the Clinics area using day, week, month and list views.",
+  "section": "Getting around",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "day",
+      "title": "Day view",
+      "summary": "A single day's clinics and slots.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Today", "path": "/v1/site/1/clinics/day", "data": {} }] }
+      ]
+    },
+    {
+      "id": "week",
+      "title": "Week view",
+      "summary": "A week of clinics with daily totals.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "This week", "path": "/v1/site/1/clinics/week", "data": {} }] }
+      ]
+    },
+    {
+      "id": "month",
+      "title": "Month view",
+      "summary": "A month calendar of clinics and capacity.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "This month", "path": "/v1/site/1/clinics/month", "data": {} }] }
+      ]
+    },
+    {
+      "id": "clinics-list",
+      "title": "Clinics list",
+      "summary": "Every clinic series and single clinic for the site.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "First page", "screenshots": [{ "label": "Page 1", "path": "/v1/site/1/clinics", "data": {} }] },
+        { "id": "page-two", "label": "Second page", "screenshots": [{ "label": "Page 2", "path": "/v1/site/1/clinics?page=2", "data": {} }] }
+      ]
+    }
+  ]
+}

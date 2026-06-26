@@ -602,7 +602,7 @@ router.get('/site/:id/clinics/edit/:sessionId/success', (req, res) => {
           text: 'Back to clinics'
         },
         {
-          href: `/site/${req.site_id}/availability/week`,
+          href: `/site/${req.site_id}/clinics/week`,
           text: 'Go to week view'
         }
       ]
@@ -616,7 +616,7 @@ router.get('/site/:id/clinics/edit/:sessionId/success', (req, res) => {
       : undefined,
     primaryHref: isCancelMode ? `/site/${req.site_id}/clinics` : undefined,
     primaryText: isCancelMode ? 'Back to clinics' : undefined,
-    secondaryHref: isCancelMode ? `/site/${req.site_id}/availability/week` : undefined,
+    secondaryHref: isCancelMode ? `/site/${req.site_id}/clinics/week` : undefined,
     secondaryText: isCancelMode ? 'Go to week view' : undefined,
     cancelSummary,
     unaffectedChildClinics: matchingSuccessState?.unaffectedChildClinics || [],

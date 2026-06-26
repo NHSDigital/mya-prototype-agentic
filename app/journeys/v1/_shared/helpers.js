@@ -1572,7 +1572,7 @@ function buildWeekAvailabilitySummary(week, dailyAvailability, slotsByDate, serv
       totalAppointments,
       bookedAppointments,
       unbookedAppointments: Math.max(0, totalAppointments - bookedAppointments),
-      dayViewHref: `/site/${siteId}/availability/day?date=${day}`
+      dayViewHref: `/site/${siteId}/clinics/day?date=${day}`
     };
   });
 }
@@ -1647,7 +1647,7 @@ function buildMonthAvailabilitySummary(weekRanges, dailyAvailability, slotsByDat
       totalAppointments,
       bookedAppointments,
       unbookedAppointments: Math.max(0, totalAppointments - bookedAppointments),
-      weekViewHref: `/site/${siteId}/availability/week?date=${weekRange.start}`
+      weekViewHref: `/site/${siteId}/clinics/week?date=${weekRange.start}`
     };
   });
 }

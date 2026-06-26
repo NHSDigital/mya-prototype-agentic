@@ -110,11 +110,11 @@ function findChildSessionForDate(dateISO, childSessions = []) {
 }
 
 function weekViewHref(siteId, dateISO) {
-  return `/site/${siteId}/availability/week?date=${dateISO}`;
+  return `/site/${siteId}/clinics/week?date=${dateISO}`;
 }
 
 function dayViewHref(siteId, dateISO) {
-  return `/site/${siteId}/availability/day?date=${dateISO}`;
+  return `/site/${siteId}/clinics/day?date=${dateISO}`;
 }
 
 function changeSummaryPath(siteId, itemId) {
@@ -687,7 +687,7 @@ function ensureChangeStateForSession(req, res) {
 
 router.get('/site/:id/change/:type/:itemId', (req, res) => {
   if (req.params.type !== 'session') {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   const shouldDiscardChanges = req.query?.discard === '1' || req.query?.discard === 'true';
@@ -697,7 +697,7 @@ router.get('/site/:id/change/:type/:itemId', (req, res) => {
 
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state)) {
@@ -717,7 +717,7 @@ router.get('/site/:id/change/:type/:itemId', (req, res) => {
 router.all('/site/:id/change/session/:itemId/details', (req, res) => {
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, '/details')) {
@@ -746,7 +746,7 @@ router.all('/site/:id/change/session/:itemId/details', (req, res) => {
 router.all('/site/:id/change/session/:itemId/clinic-times', (req, res) => {
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, '/clinic-times')) {
@@ -775,7 +775,7 @@ router.all('/site/:id/change/session/:itemId/clinic-times', (req, res) => {
 router.all('/site/:id/change/session/:itemId/appointments-calculator', (req, res) => {
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, '/appointments-calculator')) {
@@ -788,7 +788,7 @@ router.all('/site/:id/change/session/:itemId/appointments-calculator', (req, res
 router.all('/site/:id/change/session/:itemId/services', (req, res) => {
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, '/services')) {
@@ -818,7 +818,7 @@ router.all('/site/:id/change/session/:itemId/services', (req, res) => {
 router.get('/site/:id/change/session/:itemId/change/:field', (req, res) => {
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, `/change/${req.params.field}`)) {
@@ -838,7 +838,7 @@ router.get('/site/:id/change/session/:itemId/change/:field', (req, res) => {
 router.all('/site/:id/change/session/:itemId/affected-bookings', (req, res) => {
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, '/affected-bookings')) {
@@ -877,7 +877,7 @@ router.all('/site/:id/change/session/:itemId/check-answers', (req, res) => {
   const data = req.session.data;
   const state = ensureChangeStateForSession(req, res);
   if (!state) {
-    return res.redirect(`/site/${req.site_id}/availability/week`);
+    return res.redirect(`/site/${req.site_id}/clinics/week`);
   }
 
   if (redirectToSingleClinicEdit(req, res, state, '/check-answers')) {

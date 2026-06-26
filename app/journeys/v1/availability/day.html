@@ -13,16 +13,16 @@
           items: [
             {
               text: 'Day view',
-              href: '/site/' ~ site_id ~ '/availability/day',
+              href: '/site/' ~ site_id ~ '/clinics/day',
               current: true
             },
             {
               text: 'Week view',
-              href: '/site/' ~ site_id ~ '/availability/week'
+              href: '/site/' ~ site_id ~ '/clinics/week'
             },
             {
               text: 'Month view',
-              href: '/site/' ~ site_id ~ '/availability/month'
+              href: '/site/' ~ site_id ~ '/clinics/month'
             },
             {
               text: 'Create and manage clinics',
@@ -37,11 +37,11 @@
       {{ pagination({
         previous: {
           labelText: (yesterday | formatDate('EEE, d LLL')),
-          href: "/site/"~site_id~"/availability/day?date="~yesterday
+          href: "/site/"~site_id~"/clinics/day?date="~yesterday
         },
         next: {
           labelText: (tomorrow | formatDate('EEE, d LLL')),
-          href: "/site/"~site_id~"/availability/day?date="~tomorrow
+          href: "/site/"~site_id~"/clinics/day?date="~tomorrow
         }
       }) }}
 
