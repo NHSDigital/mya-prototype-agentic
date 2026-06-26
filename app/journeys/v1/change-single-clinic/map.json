@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Change a single clinic",
+  "summary": "Edit a standalone single clinic, including date, times and services.",
+  "section": "Manage clinics",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "summary",
+      "title": "Single clinic summary",
+      "summary": "Review the clinic and choose what to change.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Summary", "path": "/v1/site/1/clinics/edit/fixture-single-1", "data": {} }] }
+      ]
+    },
+    {
+      "id": "details",
+      "title": "Change date",
+      "summary": "Edit the clinic date.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Date", "path": "/v1/site/1/clinics/edit/fixture-single-1/details", "data": {} }] }
+      ]
+    },
+    {
+      "id": "clinic-times",
+      "title": "Change times and capacity",
+      "summary": "Edit the hours and vaccinator capacity.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Times", "path": "/v1/site/1/clinics/edit/fixture-single-1/clinic-times", "data": {} }] }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Change services",
+      "summary": "Edit which vaccinations are offered.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Services", "path": "/v1/site/1/clinics/edit/fixture-single-1/services", "data": {} }] }
+      ]
+    },
+    {
+      "id": "affected-bookings",
+      "title": "Affected bookings",
+      "summary": "Decide what happens to bookings affected by a change.",
+      "defaultVariant": "affected",
+      "variants": [
+        { "id": "affected", "label": "Affected", "screenshots": [{ "label": "Affected bookings", "path": "/v1/site/1/clinics/edit/fixture-single-1/affected-bookings", "data": { "editClinic": { "siteId": "1", "sessionId": "fixture-single-1", "draft": { "type": "Single clinic" }, "cancelMode": false, "affectedBookingIds": ["documentation-booking-1"], "bookingAction": null } } }] }
+      ]
+    },
+    {
+      "id": "check-answers",
+      "title": "Check answers",
+      "summary": "Review the changes before saving.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/edit/fixture-single-1/check-answers", "data": {} }] }
+      ]
+    },
+    {
+      "id": "success",
+      "title": "Success",
+      "summary": "Confirm the clinic has been updated.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Success", "path": "/v1/site/1/clinics/edit/fixture-single-1/success", "data": { "editClinicSuccess": { "siteId": "1", "sessionId": "fixture-single-1", "isSeries": false, "unaffectedChildClinics": [], "unaffectedChildReasonText": "details" } } }] }
+      ]
+    }
+  ]
+}

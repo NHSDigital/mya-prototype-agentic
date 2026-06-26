@@ -26,9 +26,9 @@ router.use('/', require('./clinics/routes'));
 router.use('/', require('./cancel-a-date-range/routes'));
 router.use('/', require('./availability/routes'));
 router.use('/', require('./change-clinic-that-is-part-of-a-clinic-series/routes'));
-router.use('/', require('./cancel-clinic/routes'));
-router.use('/', require('./change-clinic/routes'));
-router.use('/', require('./create-clinic/routes'));
+router.use('/', require('./_cancel-clinics/routes'));
+router.use('/', require('./_change-clinics/routes'));
+router.use('/', require('./_create-clinics/routes'));
 
 // Legacy redirects + the deprecated old-change page.
 router.use('/', require('./_legacy/routes'));

@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Create a clinic series",
+  "summary": "Create a recurring clinic series.",
+  "section": "Create clinics",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "type-of-clinc",
+      "title": "Type of clinic",
+      "summary": "Choose a clinic series.",
+      "defaultVariant": "series",
+      "variants": [
+        { "id": "series", "label": "Series", "screenshots": [{ "label": "Choose type", "path": "/v1/site/1/clinics/type-of-clinc", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "details",
+      "title": "Details and dates",
+      "summary": "Enter the series details and date range.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Details", "path": "/v1/site/1/clinics/details", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "days",
+      "title": "Days of the week",
+      "summary": "Pick which weekdays the series runs.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Days", "path": "/v1/site/1/clinics/days", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "clinic-times",
+      "title": "Times and capacity",
+      "summary": "Set the hours, appointment length and vaccinator capacity.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Times", "path": "/v1/site/1/clinics/clinic-times", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Services",
+      "summary": "Choose which vaccinations are offered.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Services", "path": "/v1/site/1/clinics/services", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "clinic-closures",
+      "title": "Closures",
+      "summary": "Add any dates the series should skip.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Closures", "path": "/v1/site/1/clinics/clinic-closures", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "check-answers",
+      "title": "Check answers",
+      "summary": "Review before creating.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/check-answers", "data": { "newSession": { "type": "Clinic series" } } }] }
+      ]
+    },
+    {
+      "id": "success",
+      "title": "Success",
+      "summary": "Confirm the clinic series has been created.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Success", "path": "/v1/site/1/clinics/success", "data": { "lastCreatedClinicFlowType": "series" } }] }
+      ]
+    }
+  ]
+}

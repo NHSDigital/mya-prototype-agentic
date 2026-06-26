@@ -2,7 +2,7 @@
   "$schema": "../../../map/map.schema.json",
   "title": "Cancel a date range",
   "summary": "Cancel every clinic in a chosen date range, optionally cancelling the bookings in it.",
-  "section": "Manage availability",
+  "section": "Cancel clinics",
   "status": "ready for dev",
   "steps": [
     {

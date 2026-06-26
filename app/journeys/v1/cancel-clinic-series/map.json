@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Cancel a clinic series",
+  "summary": "Cancel a whole clinic series and decide what happens to its bookings.",
+  "section": "Cancel clinics",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "confirm-cancellation",
+      "title": "Confirm cancellation",
+      "summary": "Confirm the series can be cancelled when no bookings are affected.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Confirm", "path": "/v1/site/1/clinics/cancel/fixture-series-1", "data": {} }] }
+      ]
+    },
+    {
+      "id": "affected-bookings",
+      "title": "Affected bookings",
+      "summary": "Decide whether to keep or cancel affected bookings.",
+      "defaultVariant": "affected",
+      "variants": [
+        { "id": "affected", "label": "Affected", "screenshots": [{ "label": "Affected bookings", "path": "/v1/site/1/clinics/cancel/fixture-series-1/affected-bookings", "data": { "editClinic": { "siteId": "1", "sessionId": "fixture-series-1", "draft": { "type": "Clinic series", "startDate": "2026-02-02", "endDate": "2026-12-21", "from": "09:00", "until": "13:00" }, "cancelMode": true, "cancelScope": "series", "affectedBookingIds": ["documentation-booking-1"], "bookingAction": null } } }] }
+      ]
+    },
+    {
+      "id": "check-answers",
+      "title": "Check answers",
+      "summary": "Review the cancellation before saving.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/cancel/fixture-series-1/check-answers", "data": { "editClinic": { "siteId": "1", "sessionId": "fixture-series-1", "draft": { "type": "Clinic series", "startDate": "2026-02-02", "endDate": "2026-12-21", "from": "09:00", "until": "13:00" }, "cancelMode": true, "cancelScope": "series", "affectedBookingIds": ["documentation-booking-1"], "bookingAction": "orphan" } } }] }
+      ]
+    }
+  ]
+}

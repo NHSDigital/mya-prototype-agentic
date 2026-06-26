@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Create a single clinic",
+  "summary": "Create a standalone clinic on one date.",
+  "section": "Create clinics",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "type-of-clinc",
+      "title": "Type of clinic",
+      "summary": "Choose a single clinic.",
+      "defaultVariant": "single",
+      "variants": [
+        { "id": "single", "label": "Single", "screenshots": [{ "label": "Choose type", "path": "/v1/site/1/clinics/type-of-clinc", "data": { "newSession": { "type": "Single clinic" } } }] }
+      ]
+    },
+    {
+      "id": "details",
+      "title": "Details and date",
+      "summary": "Enter the clinic details and date.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Details", "path": "/v1/site/1/clinics/details", "data": { "newSession": { "type": "Single clinic" } } }] }
+      ]
+    },
+    {
+      "id": "clinic-times",
+      "title": "Times and capacity",
+      "summary": "Set the hours, appointment length and vaccinator capacity.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Times", "path": "/v1/site/1/clinics/clinic-times", "data": { "newSession": { "type": "Single clinic" } } }] }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Services",
+      "summary": "Choose which vaccinations are offered.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Services", "path": "/v1/site/1/clinics/services", "data": { "newSession": { "type": "Single clinic" } } }] }
+      ]
+    },
+    {
+      "id": "check-answers",
+      "title": "Check answers",
+      "summary": "Review before creating.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/check-answers", "data": { "newSession": { "type": "Single clinic" } } }] }
+      ]
+    },
+    {
+      "id": "success",
+      "title": "Success",
+      "summary": "Confirm the single clinic has been created.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Success", "path": "/v1/site/1/clinics/success", "data": { "lastCreatedClinicFlowType": "single" } }] }
+      ]
+    }
+  ]
+}

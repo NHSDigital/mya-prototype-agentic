@@ -1,6 +1,6 @@
 {
   "$schema": "../../../map/map.schema.json",
-  "title": "Change a clinic in a series",
+  "title": "Change a clinic (that’s part of a series)",
   "summary": "Change one occurrence of a clinic series (the date cannot be changed).",
   "section": "Manage clinics",
   "status": "ready for dev",

@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Cancel a clinic in a series",
+  "summary": "Cancel one occurrence of a clinic series without cancelling the whole series.",
+  "section": "Cancel clinics",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "confirm-cancellation",
+      "title": "Confirm cancellation",
+      "summary": "Confirm the occurrence can be cancelled when no bookings are affected.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Confirm", "path": "/v1/site/1/clinics/cancel/0641ee41151834bb", "data": {} }] }
+      ]
+    },
+    {
+      "id": "affected-bookings",
+      "title": "Affected bookings",
+      "summary": "Decide whether to keep or cancel affected bookings.",
+      "defaultVariant": "affected",
+      "variants": [
+        { "id": "affected", "label": "Affected", "screenshots": [{ "label": "Affected bookings", "path": "/v1/site/1/clinics/cancel/0641ee41151834bb/affected-bookings", "data": { "editClinic": { "siteId": "1", "sessionId": "0641ee41151834bb", "draft": { "type": "Single clinic", "startDate": "2026-02-05", "endDate": "2026-02-05", "from": "09:00", "until": "13:00" }, "cancelMode": true, "cancelScope": "occurrence", "cancelRecurringId": "fixture-series-1", "cancelDate": "2026-02-05", "affectedBookingIds": ["documentation-booking-1"], "bookingAction": null } } }] }
+      ]
+    },
+    {
+      "id": "check-answers",
+      "title": "Check answers",
+      "summary": "Review the cancellation before saving.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/cancel/0641ee41151834bb/check-answers", "data": { "editClinic": { "siteId": "1", "sessionId": "0641ee41151834bb", "draft": { "type": "Single clinic", "startDate": "2026-02-05", "endDate": "2026-02-05", "from": "09:00", "until": "13:00" }, "cancelMode": true, "cancelScope": "occurrence", "cancelRecurringId": "fixture-series-1", "cancelDate": "2026-02-05", "affectedBookingIds": ["documentation-booking-1"], "bookingAction": "orphan" } } }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../map/map.schema.json",
+  "title": "Change a clinic series",
+  "summary": "Edit a whole clinic series, including dates, days, times, services and closures.",
+  "section": "Manage clinics",
+  "status": "ready for dev",
+  "steps": [
+    {
+      "id": "summary",
+      "title": "Clinic series summary",
+      "summary": "Review the series and choose what to change.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Summary", "path": "/v1/site/1/clinics/edit/fixture-series-1", "data": {} }] }
+      ]
+    },
+    {
+      "id": "make-a-change",
+      "title": "Make a change",
+      "summary": "Choose what to edit in the clinic series.",
+      "defaultVariant": "dates",
+      "variants": [
+        { "id": "dates", "label": "Dates", "screenshots": [{ "label": "Dates", "path": "/v1/site/1/clinics/edit/fixture-series-1/details", "data": {} }] },
+        { "id": "days", "label": "Days", "screenshots": [{ "label": "Days", "path": "/v1/site/1/clinics/edit/fixture-series-1/days", "data": {} }] },
+        { "id": "times-and-capacity", "label": "Times and capacity", "screenshots": [{ "label": "Times", "path": "/v1/site/1/clinics/edit/fixture-series-1/clinic-times", "data": {} }] },
+        { "id": "services", "label": "Services", "screenshots": [{ "label": "Services", "path": "/v1/site/1/clinics/edit/fixture-series-1/services", "data": {} }] },
+        { "id": "closures", "label": "Closures", "screenshots": [{ "label": "Closures", "path": "/v1/site/1/clinics/edit/fixture-series-1/clinic-closures", "data": {} }] }
+      ]
+    },
+    {
+      "id": "affected-bookings",
+      "title": "Affected bookings",
+      "summary": "Decide what happens to bookings affected by a change.",
+      "defaultVariant": "affected",
+      "variants": [
+        { "id": "affected", "label": "Affected", "screenshots": [{ "label": "Affected bookings", "path": "/v1/site/1/clinics/edit/fixture-series-1/affected-bookings", "data": { "editClinic": { "siteId": "1", "sessionId": "fixture-series-1", "draft": { "type": "Clinic series" }, "cancelMode": false, "affectedBookingIds": ["documentation-booking-1"], "bookingAction": null } } }] }
+      ]
+    },
+    {
+      "id": "check-answers",
+      "title": "Check answers",
+      "summary": "Review the changes before saving.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/edit/fixture-series-1/check-answers", "data": {} }] }
+      ]
+    },
+    {
+      "id": "success",
+      "title": "Success",
+      "summary": "Confirm the series has been updated.",
+      "defaultVariant": "default",
+      "variants": [
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Success", "path": "/v1/site/1/clinics/edit/fixture-series-1/success", "data": { "editClinicSuccess": { "siteId": "1", "sessionId": "fixture-series-1", "isSeries": true, "unaffectedChildClinics": [], "unaffectedChildReasonText": "details" } } }] }
+      ]
+    }
+  ]
+}
