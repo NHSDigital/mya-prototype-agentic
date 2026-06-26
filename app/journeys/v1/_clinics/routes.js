@@ -1,6 +1,5 @@
-// Journey controller: browse clinics (list + day / week / month views)
+// Journey controller: clinics (list + day / week / month views)
 // Canonical URL base: /site/:id/clinics and /site/:id/clinics/{day,week,month}
-// Legacy /site/:id/availability/{day,week,month} URLs redirect here.
 // Per-site context (res.locals.dailyAvailability, res.locals.slots) is provided
 // centrally by app/journeys/_shared/site-context.js.
 
@@ -22,21 +21,6 @@ const {
   buildNhsPagination,
 } = require('../_shared/helpers');
 
-function clinicsViewPath(siteId, view, query = '') {
-  return `/site/${siteId}/clinics/${view}${query}`;
-}
-
-function legacyAvailabilityRedirect(view) {
-  return (req, res) => {
-    const query = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
-    return res.redirect(clinicsViewPath(req.site_id, view, query));
-  };
-}
-
-router.get('/site/:id/availability/day', legacyAvailabilityRedirect('day'));
-router.get('/site/:id/availability/week', legacyAvailabilityRedirect('week'));
-router.get('/site/:id/availability/month', legacyAvailabilityRedirect('month'));
-
 router.get('/site/:id/clinics', (req, res) => {
   clearEditState(req.session.data);
   ensureCreateSession(req.session.data);
@@ -56,7 +40,7 @@ router.get('/site/:id/clinics', (req, res) => {
     paginationResult.totalPages
   );
 
-  res.render('clinics/clinics', {
+  res.render('clinics/list', {
     clinicsPagination
   });
 });
@@ -142,7 +126,7 @@ router.get('/site/:id/clinics/day', (req, res) => {
     daySummary.unbookedAppointments = Math.max(0, daySummary.totalAppointments - daySummary.bookedAppointments);
   }
 
-  res.render('availability/day', {
+  res.render('clinics/day', {
     date,
     today,
     tomorrow,
@@ -187,7 +171,7 @@ router.get('/site/:id/clinics/week', (req, res) => {
     `/site/${site_id}/clinics/week?date=${startFromDate}`
   );
 
-  res.render('availability/week', {
+  res.render('clinics/week', {
     date: startFromDate,
     today,
     week,
@@ -214,7 +198,7 @@ router.get('/site/:id/clinics/month', (req, res) => {
     recurringSessions
   );
 
-  res.render('availability/month', {
+  res.render('clinics/month', {
     today,
     currentDate: monthData.currentDate,
     previousMonthDate: monthData.previousMonthDate,

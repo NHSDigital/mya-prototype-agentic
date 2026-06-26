@@ -6,6 +6,5 @@ navigation rather than the old implementation folders.
 
 ## Key decisions
 
-- `/site/:id/clinics/day`, `/week` and `/month` are the canonical availability URLs.
+- `/site/:id/clinics/day`, `/week` and `/month` are the Clinics view URLs.
 - `/site/:id/clinics` remains the clinics list.
-- Old `/site/:id/availability/...` URLs redirect to the equivalent Clinics URL.

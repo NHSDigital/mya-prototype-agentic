@@ -14,6 +14,6 @@
   **When** I open the clinics list
   **Then** I can browse paginated single clinics and clinic series for the site.
 
-- **Given** I visit an old availability URL
+- **Given** I use a Clinics URL
   **When** the route loads
-  **Then** I am redirected to the equivalent Clinics URL.
+  **Then** the matching Clinics view is shown.

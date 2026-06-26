@@ -23,6 +23,7 @@
 // by the '/site' test. '/login', '/not-in-this-prototype', '/' stay global.
 const APP_PATH = /^\/(site|set-filters)(?=$|[/?#])/;
 const ATTR_LINK = /\b(href|action|formaction)=(["'])(\/(?:site|set-filters)[^"']*)\2/gi;
+const SHARED_RENDER_VIEW = /^(404|500)(?:\.html)?$/;
 
 function prefixAppPath(url, prefix) {
   if (typeof url !== 'string') return url;
@@ -58,7 +59,9 @@ module.exports = function versionMiddleware(version) {
         callback = options;
         options = {};
       }
-      const versionedView = view.startsWith(version + '/') ? view : `${version}/${view}`;
+      const versionedView = view.startsWith(version + '/') || SHARED_RENDER_VIEW.test(view)
+        ? view
+        : `${version}/${view}`;
       _render(versionedView, options || {}, (err, html) => {
         if (err) return callback ? callback(err) : next(err);
         const out = rewriteHtmlLinks(html, prefix);

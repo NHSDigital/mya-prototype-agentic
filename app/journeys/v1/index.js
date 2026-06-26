@@ -23,7 +23,7 @@ router.use('/site/:id', siteContextMiddleware);
 // Migrated journeys
 router.use('/', require('./sites/routes'));
 router.use('/', require('./cancel-a-date-range/routes'));
-router.use('/', require('./_browse-clinics/routes'));
+router.use('/', require('./_clinics/routes'));
 router.use('/', require('./change-clinic-that-is-part-of-a-clinic-series/routes'));
 router.use('/', require('./_cancel-clinics/routes'));
 router.use('/', require('./_change-clinics/routes'));
