@@ -4,8 +4,8 @@
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
-    "start": "node scripts/start-dev.js",
-    "start:app": "node app.js",
+    "start": "node app.js",
+    "dev": "node scripts/start-dev.js",
     "watch": "node --watch app.js",
     "journey:new": "node scripts/journey-new.js",
     "map:validate": "node scripts/map-validate.js",
