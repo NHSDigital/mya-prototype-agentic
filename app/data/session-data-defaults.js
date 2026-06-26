@@ -649,6 +649,28 @@ for (const cfg of sitesConfig) {
   bookings[site_id] = bookingData;
   sites[site_id] = site;
   recurring_sessions[site_id] = recurringSessionsForSite;
+
+  // Date-independent documentation fixture: a clinic with a STABLE, hardcoded id
+  // and fixed dates, so the change-clinic / cancel-clinic /map screenshots never
+  // break when the rest of the seed data's today-relative ids drift. Referenced by
+  // app/journeys/v1/{change-clinic,cancel-clinic}/map.json.
+  if (String(site_id) === '1') {
+    recurring_sessions[site_id]['fixture-series-1'] = {
+      id: 'fixture-series-1',
+      label: 'Documentation fixture clinic',
+      startDate: '2026-02-02',
+      endDate: '2026-12-21',
+      recurrencePattern: { frequency: 'Weekly', interval: 1, byDay: ['Monday', 'Thursday'] },
+      from: '09:00',
+      until: '13:00',
+      slotLength: 10,
+      services: ['COVID:18+', 'FLU:65+'],
+      capacity: 2,
+      childSessions: [],
+      closures: []
+    };
+  }
+
   users_by_site[site_id] = mergeWithDefaults(default_user, normalizeUserOverride(user));
 }
 

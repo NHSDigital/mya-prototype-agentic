@@ -11,7 +11,7 @@
       "summary": "Confirm the clinic to cancel and whether to keep or cancel its bookings.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/cancel/82ac86fd34f9a597/check-answers", "data": {} }] }
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/cancel/fixture-series-1", "data": {} }] }
       ]
     }
   ]

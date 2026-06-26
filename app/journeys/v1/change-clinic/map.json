@@ -11,7 +11,7 @@
       "summary": "Review the clinic and choose what to change.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Series", "screenshots": [{ "label": "Summary", "path": "/v1/site/1/clinics/edit/82ac86fd34f9a597", "data": {} }] }
+        { "id": "default", "label": "Series", "screenshots": [{ "label": "Summary", "path": "/v1/site/1/clinics/edit/fixture-series-1", "data": {} }] }
       ]
     },
     {
@@ -20,7 +20,7 @@
       "summary": "Edit the hours, appointment length and capacity.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Default", "screenshots": [{ "label": "Times", "path": "/v1/site/1/clinics/edit/82ac86fd34f9a597/clinic-times", "data": {} }] }
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Times", "path": "/v1/site/1/clinics/edit/fixture-series-1/clinic-times", "data": {} }] }
       ]
     },
     {
@@ -29,7 +29,7 @@
       "summary": "Edit which vaccinations are offered.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Default", "screenshots": [{ "label": "Services", "path": "/v1/site/1/clinics/edit/82ac86fd34f9a597/services", "data": {} }] }
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Services", "path": "/v1/site/1/clinics/edit/fixture-series-1/services", "data": {} }] }
       ]
     },
     {
@@ -38,7 +38,7 @@
       "summary": "Add or remove dates the series skips.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Default", "screenshots": [{ "label": "Closures", "path": "/v1/site/1/clinics/edit/82ac86fd34f9a597/clinic-closures", "data": {} }] }
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Closures", "path": "/v1/site/1/clinics/edit/fixture-series-1/clinic-closures", "data": {} }] }
       ]
     },
     {
@@ -47,7 +47,7 @@
       "summary": "Review the changes before saving.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/edit/82ac86fd34f9a597/check-answers", "data": {} }] }
+        { "id": "default", "label": "Default", "screenshots": [{ "label": "Review", "path": "/v1/site/1/clinics/edit/fixture-series-1/check-answers", "data": {} }] }
       ]
     }
   ]
