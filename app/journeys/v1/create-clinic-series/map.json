@@ -56,7 +56,107 @@
       "summary": "Add any dates the series should skip.",
       "defaultVariant": "default",
       "variants": [
-        { "id": "default", "label": "Default", "screenshots": [{ "label": "Closures", "path": "/v1/site/1/clinics/clinic-closures", "data": { "newSession": { "type": "Clinic series" } } }] }
+        {
+          "id": "default",
+          "label": "No closures",
+          "screenshots": [
+            {
+              "label": "No closures",
+              "path": "/v1/site/1/clinics/clinic-closures",
+              "data": {
+                "newSession": {
+                  "type": "Clinic series"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "one-closure",
+          "label": "1 closure",
+          "screenshots": [
+            {
+              "label": "1 closure",
+              "path": "/v1/site/1/clinics/clinic-closures",
+              "data": {
+                "newSession": {
+                  "type": "Clinic series",
+                  "closures": [
+                    {
+                      "startDate": "2026-12-25",
+                      "endDate": "2026-12-27",
+                      "label": "Christmas closure"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "two-closures",
+          "label": "2 closures",
+          "screenshots": [
+            {
+              "label": "2 closures",
+              "path": "/v1/site/1/clinics/clinic-closures",
+              "data": {
+                "newSession": {
+                  "type": "Clinic series",
+                  "closures": [
+                    {
+                      "startDate": "2026-12-25",
+                      "endDate": "2026-12-27",
+                      "label": "Christmas closure"
+                    },
+                    {
+                      "startDate": "2027-01-01",
+                      "endDate": "2027-01-01",
+                      "label": "New Year closure"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "add-closure",
+          "label": "Add clinic closure",
+          "screenshots": [
+            {
+              "label": "Add clinic closure",
+              "path": "/v1/site/1/clinics/clinic-closures/add",
+              "data": {
+                "newSession": {
+                  "type": "Clinic series"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "remove-closure",
+          "label": "Remove clinic closure",
+          "screenshots": [
+            {
+              "label": "Remove clinic closure",
+              "path": "/v1/site/1/clinics/clinic-closures/0/remove",
+              "data": {
+                "newSession": {
+                  "type": "Clinic series",
+                  "closures": [
+                    {
+                      "startDate": "2026-12-25",
+                      "endDate": "2026-12-27",
+                      "label": "Christmas closure"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
       ]
     },
     {
