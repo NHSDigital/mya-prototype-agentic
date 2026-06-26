@@ -21,6 +21,7 @@
 // -----------------------------------------------------------------------------
 
 const HEADER = 'x-journey-screenshot-data';
+const QUERY_PARAM = '_data';
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
@@ -40,11 +41,9 @@ function deepMerge(target, source) {
   return target;
 }
 
-function decodeHeader(req) {
-  const headerValue = req.get(HEADER);
-  if (!headerValue) return null;
+function decodeBase64url(encoded) {
   try {
-    const rawJson = Buffer.from(String(headerValue), 'base64url').toString('utf8');
+    const rawJson = Buffer.from(String(encoded), 'base64url').toString('utf8');
     const parsed = JSON.parse(rawJson);
     return isPlainObject(parsed) ? parsed : null;
   } catch {
@@ -52,8 +51,20 @@ function decodeHeader(req) {
   }
 }
 
+function decodeHeader(req) {
+  const headerValue = req.get(HEADER);
+  if (!headerValue) return null;
+  return decodeBase64url(headerValue);
+}
+
+function decodeQueryParam(req) {
+  const paramValue = req.query?.[QUERY_PARAM];
+  if (!paramValue) return null;
+  return decodeBase64url(paramValue);
+}
+
 function screenshotDataMiddleware(req, res, next) {
-  const data = decodeHeader(req);
+  const data = decodeHeader(req) || decodeQueryParam(req);
   if (!data) return next();
 
   // Ensure a session data object exists (the kit normally creates it first).
@@ -80,4 +91,4 @@ function screenshotDataMiddleware(req, res, next) {
   next();
 }
 
-module.exports = { screenshotDataMiddleware, deepMerge, HEADER };
+module.exports = { screenshotDataMiddleware, deepMerge, HEADER, QUERY_PARAM };

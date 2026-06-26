@@ -26,6 +26,13 @@ function escapeHtml(value) {
 function journeyPath(version, journey) {
   return `/map/${version}/${journey}`;
 }
+
+function buildRouteLinkWithData(path, data) {
+  if (!path) return '';
+  if (!data || typeof data !== 'object' || Object.keys(data).length === 0) return path;
+  const encoded = Buffer.from(JSON.stringify(data)).toString('base64url');
+  return `${path}?_data=${encoded}`;
+}
 function stepPath(version, journey, stepId) {
   return `/map/${version}/${journey}/${stepId}`;
 }
@@ -113,7 +120,10 @@ function buildVariants(model, step, insightsHtml, implementationHtml) {
     const fileId = sanitizeForFileName(v.id);
     const screenshotPath = screenshotUrl(model.journey, model.version, step.id, fileId);
     const alt = v.alt || `Screenshot of ${step.title} — ${v.label}`;
-    const routeLink = v.screenshots[0] ? v.screenshots[0].path : '';
+    const screenshot = v.screenshots[0];
+    const routeLink = screenshot
+      ? buildRouteLinkWithData(screenshot.path, screenshot.data)
+      : '';
     return {
       id: v.id,
       label: v.label,

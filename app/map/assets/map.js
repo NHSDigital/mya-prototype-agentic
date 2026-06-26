@@ -40,6 +40,13 @@ function getVariantIdFromPath(variantIndex, stepSlug) {
   return Object.prototype.hasOwnProperty.call(variantIndex, variantFromPath) ? variantFromPath : ''
 }
 
+function getVariantIdFromQuery(variantIndex) {
+  const params = new URLSearchParams(window.location.search)
+  const variantFromQuery = params.get('variant') || ''
+  if (!variantFromQuery) return ''
+  return Object.prototype.hasOwnProperty.call(variantIndex, variantFromQuery) ? variantFromQuery : ''
+}
+
 function updateVariant(stepSlug, variantData) {
   const screenshot = document.querySelector(`[data-map-screenshot="${stepSlug}"] img`)
   const insights = document.querySelector(`[data-map-insights="${stepSlug}"]`)
@@ -107,9 +114,11 @@ document.querySelectorAll('[data-map-variant-select], .js-map-variant-select').f
     return
   }
 
+  const queryVariantId = getVariantIdFromQuery(variantIndex)
   const pathVariantId = getVariantIdFromPath(variantIndex, stepSlug)
   const initialVariantId =
-    pathVariantId
+    queryVariantId
+    || pathVariantId
     || (defaultVariantId && variantIndex[defaultVariantId] ? defaultVariantId : '')
     || (variantIndex[selectElement.value] ? selectElement.value : '')
     || Object.keys(variantIndex)[0]
@@ -124,6 +133,9 @@ document.querySelectorAll('[data-map-variant-select], .js-map-variant-select').f
     const selectedVariant = variantIndex[selectedVariantId]
     if (selectedVariant) {
       updateVariant(stepSlug, selectedVariant)
+      const params = new URLSearchParams(window.location.search)
+      params.set('variant', selectedVariantId)
+      history.replaceState(null, '', '?' + params.toString())
     }
   })
 })

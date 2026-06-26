@@ -129,7 +129,9 @@
               "path": "/v1/site/1/clinics/clinic-closures/add",
               "data": {
                 "newSession": {
-                  "type": "Clinic series"
+                  "type": "Clinic series",
+                  "closure[name]": "Christmas closure",
+                  "closure[startDate][day]": "25"
                 }
               }
             }
